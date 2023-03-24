@@ -1,6 +1,6 @@
 import { AppDataSource } from "./data-source"
-import { Room,Table } from "./entity/Floor_Plan"
-import { Employee } from "./entity/hr"
+import { Room,Table } from "./entity/floor_plan/Floor_Plan"
+import { Employee } from "./entity/hr/hr"
 AppDataSource.initialize().then(async () => {
 
 //1
@@ -12,9 +12,9 @@ AppDataSource.initialize().then(async () => {
         console.log(`The table ${table.table_name} is located in the room ${room.room_name}.`);
     }
 
-//2
+
     const employeeRepository = AppDataSource.getRepository(Employee);
-    const employee = await employeeRepository.findOne({ where: { id: 1 }, relations: { table:true}});
+    const employee = await employeeRepository.findOne({ where: { id: 1 }, relations: { table : true}});
     if (employee) {
         const tables = employee.table;
     if (table) {

@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, ManyToMany,OneToOne, JoinTable } from 'typeorm';
-import { Employee } from './hr';
+import { Employee } from '../hr/hr';
 @Entity()
 export class Room {
   @PrimaryGeneratedColumn()
@@ -30,7 +30,7 @@ export class Table {
   @ManyToOne(type => Room, room => room.tables)
   room: Room;
 
-  @OneToOne(type => Employee, employee => employee.table, { nullable: true })
+  @OneToOne(type => Employee, employee => employee.table)
   employee: Employee;
 }
 

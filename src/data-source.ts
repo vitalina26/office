@@ -1,7 +1,7 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
-import { Room,Table } from "./entity/Floor_Plan"
-import { Employee } from "./entity/hr"
+import { Room,Table } from "./entity/floor_plan/Floor_Plan"
+import { Employee } from "./entity/hr/hr"
 
 export const AppDataSource = new DataSource({
     type: "postgres",
@@ -10,9 +10,9 @@ export const AppDataSource = new DataSource({
     username: "postgres",
     password: "vitalina26",
     database: "office",
-    synchronize: true,
     logging: false,
     entities: [Room, Employee, Table],
     migrations: [],
-    subscribers: [],
+    synchronize: true
+    
 })
